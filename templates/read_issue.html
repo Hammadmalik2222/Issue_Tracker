@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>All Issues</title>
+</head>
+
+
+<body>
+
+    <h1>Mozilla Firefox Issues</h1>
+
+
+    <table border="1">
+
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Severity</th>
+            <th>Status</th>
+            <th>Reported By</th>
+            <th>Assigned To</th>
+            <th>Firefox Version</th>
+            <th>Security Issue</th>
+        </tr>
+
+
+        {% for issue in issues %}
+
+        <tr>
+
+            <td>{{ issue[0] }}</td>
+            <td>{{ issue[1] }}</td>
+            <td>{{ issue[2] }}</td>
+            <td>{{ issue[3] }}</td>
+            <td>{{ issue[4] }}</td>
+            <td>{{ issue[5] }}</td>
+            <td>{{ issue[6] }}</td>
+            <td>{{ issue[7] }}</td>
+            <td>{{ issue[8] }}</td>
+
+        </tr>
+
+        {% endfor %}
+
+
+    </table>
+
+
+</body>
+
+</html>

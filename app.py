@@ -33,7 +33,7 @@ def test_db():
     except Exception as e:
         return f"Database Connection Failed: {e}"
 
-@app.route("/add-issue", methods=["GET", "POST"])
+@app.route("/create-issue", methods=["GET", "POST"])
 def add_issue():
 
     if request.method == "POST":
@@ -82,8 +82,21 @@ def add_issue():
         return "Issue Added Successfully"
 
 
-    return render_template("add_issue.html")
+    return render_template("create_issue.html")
 
+
+@app.route("/read-issue")
+def view_issues():
+
+    cursor = mysql.connection.cursor()
+
+    cursor.execute("SELECT * FROM issues")
+
+    issues = cursor.fetchall()
+
+    cursor.close()
+
+    return render_template("read_issue.html", issues=issues)
 
 if __name__ == "__main__":                          #directly run
     app.run(debug=True)

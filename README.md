@@ -10,5 +10,8 @@
     - git config --global user.name "username"
     - git config --global user.email “abc123@gmail.com”
 - Make py,html,css,js file for basic flask app setup
-- make mysql connection
+- Make mysql connection
+- Make issues table in phpmyadmin 
+- Update issues table in phpmyadmin
+- Make add_issue.html file in templates & configure it into app.py to save data into DB
 
