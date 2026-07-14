@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Add Issue</title>
+</head>
+
+<body>
+
+    <h1>Add New Issue</h1>
+
+    <form method="POST" action="/add-issue">
+
+        <label>Title:</label>
+        <input type="text" name="title">
+
+        <br><br>
+
+        <label>Description:</label>
+        <textarea name="description"></textarea>
+
+        <br><br>
+
+        <label>Severity:</label>
+        <select name="severity">
+            <option>Low</option>
+            <option>Medium</option>
+            <option>High</option>
+            <option>Critical</option>
+        </select>
+
+        <br><br>
+
+        <label>Reported By:</label>
+        <input type="text" name="reported_by">
+
+        <br><br>
+
+        <label>Assigned To:</label>
+        <input type="text" name="assigned_to">
+
+        <br><br>
+
+        <label>Firefox Version:</label>
+        <input type="text" name="firefox_version">
+
+        <br><br>
+
+        <label>Security Issue:</label>
+        <select name="is_security_issue">
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+
+        <br><br>
+
+        <button type="submit">
+            Add Issue
+        </button>
+
+    </form>
+
+</body>
+
+</html>

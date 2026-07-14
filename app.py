@@ -1,6 +1,7 @@
 from flask import Flask                             # import class
 from flask import render_template
-from flask_mysqldb import MySQL                   # render & return html file
+from flask_mysqldb import MySQL 
+from flask import request                  # render & return html file
 
 app = Flask(__name__)     
 
@@ -31,6 +32,57 @@ def test_db():
 
     except Exception as e:
         return f"Database Connection Failed: {e}"
+
+@app.route("/add-issue", methods=["GET", "POST"])
+def add_issue():
+
+    if request.method == "POST":
+
+        title = request.form["title"]
+        description = request.form["description"]
+        severity = request.form["severity"]
+        reported_by = request.form["reported_by"]
+        assigned_to = request.form["assigned_to"]
+        firefox_version = request.form["firefox_version"]
+        is_security_issue = request.form["is_security_issue"]
+
+
+        cursor = mysql.connection.cursor()
+
+        cursor.execute("""
+            INSERT INTO issues
+            (
+            title,
+            description,
+            severity,
+            reported_by,
+            assigned_to,
+            firefox_version,
+            is_security_issue
+            )
+
+            VALUES (%s,%s,%s,%s,%s,%s,%s)
+
+        """,
+        (
+        title,
+        description,
+        severity,
+        reported_by,
+        assigned_to,
+        firefox_version,
+        is_security_issue
+        ))
+
+
+        mysql.connection.commit()
+
+        cursor.close()
+
+        return "Issue Added Successfully"
+
+
+    return render_template("add_issue.html")
 
 
 if __name__ == "__main__":                          #directly run
