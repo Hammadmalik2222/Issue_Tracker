@@ -9,4 +9,6 @@
     - git init
     - git config --global user.name "username"
     - git config --global user.email “abc123@gmail.com”
+- Make py,html,css,js file for basic flask app setup
+- make mysql connection
 
