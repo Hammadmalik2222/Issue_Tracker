@@ -10,3 +10,4 @@ CREATE TABLE issues (
     is_security_issue ENUM('Yes', 'No') DEFAULT 'No',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
