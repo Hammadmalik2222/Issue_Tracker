@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>
+        Mozilla Firefox Issue Tracker
+    </title>
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+
+</head>
+
+
+<body>
+
+
+    <div id="loader">
+
+        <img src="/firefox-logo.png" class="logo">
+
+        <h2>
+            Mozilla Firefox Issue Tracker
+        </h2>
+
+        <p>
+            Loading...
+        </p>
+
+    </div>
+
+
+
+    <nav>
+
+        <img src="{{ url_for('static', filename='images/firefox-logo.png') }}">
+
+
+        <h2>
+            Firefox Issue Tracker
+        </h2>
+
+
+        <a href="/">
+            Home
+        </a>
+
+
+        <a href="/create-issue">
+            Add Issue
+        </a>
+
+
+        <a href="/read-issue">
+            Issues
+        </a>
+
+
+    </nav>
+
+
+
+    <div class="container">
+
+        {% block content %}
+
+        {% endblock %}
+
+    </div>
+
+
+
+    <footer>
+
+        <p>
+            Mozilla Firefox Issue & Vulnerability Tracking System
+        </p>
+
+    </footer>
+
+
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+
+</body>
+
+</html>

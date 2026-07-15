@@ -1,7 +1,9 @@
 from flask import Flask                             # import class
 from flask import render_template
 from flask_mysqldb import MySQL 
-from flask import request                  # render & return html file
+from flask import request 
+                # render & return html file
+
 
 app = Flask(__name__)     
 
@@ -18,6 +20,12 @@ mysql = MySQL(app)                          # instance of class
 @app.route("/")                                     # root URL
 def index():
     return render_template("index.html")
+
+@app.route("/templates/<path:filename>")
+def template(filename):
+    return send_from_directory("templates", filename)
+
+
 
 
 @app.route("/test-db")                              # DB connection

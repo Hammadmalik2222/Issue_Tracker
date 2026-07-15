@@ -1,0 +1,136 @@
+body {
+
+    background: #f5f7fb;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+
+.navbar {
+
+    background: linear-gradient(90deg, #ff6a00, #ff9800);
+
+}
+
+
+.hero {
+
+    padding-top: 70px;
+
+}
+
+
+.main-logo {
+
+    width: 140px;
+
+    animation: floatLogo 3s infinite;
+
+}
+
+
+.loader-logo {
+
+    width: 130px;
+
+    animation: spinLogo 2s linear infinite;
+
+}
+
+
+#loader {
+
+    position: fixed;
+
+    width: 100%;
+
+    height: 100%;
+
+    background: white;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-direction: column;
+
+    z-index: 9999;
+
+}
+
+
+.card {
+
+    border: none;
+
+    border-radius: 15px;
+
+    transition: .3s;
+
+}
+
+
+.card:hover {
+
+    transform: translateY(-8px);
+
+}
+
+
+.btn {
+
+    border-radius: 30px;
+
+    padding: 12px 30px;
+
+}
+
+
+footer {
+
+    color: #666;
+
+}
+
+
+@keyframes spinLogo {
+
+    from {
+
+        transform: rotate(0deg);
+
+    }
+
+    to {
+
+        transform: rotate(360deg);
+
+    }
+
+}
+
+
+@keyframes floatLogo {
+
+    0% {
+
+        transform: translateY(0px);
+
+    }
+
+    50% {
+
+        transform: translateY(-12px);
+
+    }
+
+    100% {
+
+        transform: translateY(0px);
+
+    }
+
+}
