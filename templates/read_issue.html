@@ -43,6 +43,93 @@
                 📋 Firefox Issues
 
             </h2>
+            <form method="GET" action="/read-issue">
+
+                <div class="row mb-4">
+
+
+                    <div class="col-md-5">
+
+                        <label class="form-label">
+                            Filter By Severity
+                        </label>
+
+                        <select name="severity" class="form-select">
+
+                            <option value="">
+                                All Severities
+                            </option>
+
+                            <option value="Critical">
+                                Critical
+                            </option>
+
+                            <option value="High">
+                                High
+                            </option>
+
+                            <option value="Medium">
+                                Medium
+                            </option>
+
+                            <option value="Low">
+                                Low
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <div class="col-md-5">
+
+                        <label class="form-label">
+                            Filter By Status
+                        </label>
+
+                        <select name="status" class="form-select">
+
+                            <option value="">
+                                All Status
+                            </option>
+
+                            <option value="Open">
+                                Open
+                            </option>
+
+                            <option value="In Progress">
+                                In Progress
+                            </option>
+
+                            <option value="Resolved">
+                                Resolved
+                            </option>
+
+                            <option value="Closed">
+                                Closed
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <div class="col-md-2 d-flex align-items-end">
+
+                        <button class="btn btn-warning w-100">
+
+                            🔍 Filter
+
+                        </button>
+
+                    </div>
+
+
+                </div>
+
+            </form>
             {% with messages = get_flashed_messages(with_categories=true) %}
 
             {% if messages %}

@@ -102,27 +102,37 @@ def view_issues():
 
     cursor = mysql.connection.cursor()
 
-    search = request.args.get("search")
+    severity = request.args.get("severity")
+    status = request.args.get("status")
 
-    if search:
+    query = "SELECT * FROM issues WHERE 1=1"
 
-        cursor.execute(
-            "SELECT * FROM issues WHERE title LIKE %s",
-            ("%" + search + "%",)
-        )
+    values = []
 
-    else:
+    if severity:
 
-        cursor.execute(
-            "SELECT * FROM issues"
-        )
+        query += " AND severity=%s"
 
+        values.append(severity)
+
+
+    if status:
+
+        query += " AND status=%s"
+
+        values.append(status)
+
+
+    cursor.execute(query, values)
 
     issues = cursor.fetchall()
 
     cursor.close()
 
-    return render_template("read_issue.html", issues=issues)
+    return render_template(
+        "read_issue.html",
+        issues=issues
+    )
 
 @app.route("/update-issue/<int:id>", methods=["GET","POST"])
 def update_issue(id):
@@ -137,29 +147,29 @@ def update_issue(id):
         severity = request.form["severity"]
         status = request.form["status"]
         assigned_to = request.form["assigned_to"]
+        firefox_version = request.form["firefox_version"]
 
 
         cursor.execute("""
-        UPDATE issues
-
-        SET 
-        title=%s,
+        UPDATE issues 
+        SET title=%s,
         description=%s,
         severity=%s,
         status=%s,
-        assigned_to=%s
-
+        assigned_to=%s,
+        firefox_version=%s
         WHERE issue_id=%s
 
         """,
-        (
+       (
         title,
         description,
         severity,
         status,
         assigned_to,
+        firefox_version,
         id
-        ))
+))
 
 
         mysql.connection.commit()
