@@ -19,9 +19,21 @@ app.config["MYSQL_DB"] = "issue_tracker"
 mysql = MySQL(app)                          # instance of class
 
 
-@app.route("/")                                     # root URL
-def index():
-    return render_template("index.html")
+@app.route("/")
+def home():
+
+    cursor = mysql.connection.cursor()
+
+    cursor.execute("SELECT COUNT(*) FROM issues")
+
+    total_issues = cursor.fetchone()[0]
+
+    cursor.close()
+
+    return render_template(
+        "index.html",
+        total_issues=total_issues
+    )
 
 @app.route("/templates/<path:filename>")
 def template(filename):

@@ -151,3 +151,17 @@ footer {
     }
 
 }
+
+.card {
+
+    border-radius: 15px;
+
+}
+
+
+.card h1 {
+
+    font-size: 50px;
+    color: #ff7139;
+
+}
