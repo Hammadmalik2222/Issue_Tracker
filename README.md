@@ -1,4 +1,4 @@
-###Setup
+###Python Project
 - Make folder “Issue_Tracker” 
 - Install python
 - Install XAMPP
@@ -17,3 +17,4 @@
 - Make read_issue.html file in templates & configure it into app.py to show data from DB
 - Add new heading & edit button in read_issue.html
 - Make update_issue.html file in templates & configure it into app.py to update data into DB
+- Add route in app.py to delete the issue from DB 

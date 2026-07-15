@@ -159,5 +159,21 @@ def update_issue(id):
     )
 
 
+@app.route("/delete-issue/<int:id>")
+def delete_issue(id):
+
+    cursor = mysql.connection.cursor()
+
+    cursor.execute(
+        "DELETE FROM issues WHERE issue_id=%s",
+        (id,)
+    )
+
+    mysql.connection.commit()
+
+    cursor.close()
+
+    return "Issue Deleted Successfully"
+
 if __name__ == "__main__":                          #directly run
     app.run(debug=True)
