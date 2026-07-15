@@ -111,7 +111,7 @@
 
                     <tr>
 
-                        <td>{{ issue[0] }}</td>
+                        <td>{{ loop.index }}</td>
 
                         <td>{{ issue[1] }}</td>
 
@@ -216,6 +216,9 @@
 
             <div class="text-center">
 
+                <a href="/create-issue" class="btn btn-warning">
+                    ➕ Add New Issue
+                </a>
                 <a href="/" class="btn btn-dark">
 
                     🏠 Back To Home

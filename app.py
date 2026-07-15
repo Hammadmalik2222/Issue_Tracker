@@ -89,7 +89,9 @@ def add_issue():
 
         cursor.close()
 
-        return "Issue Added Successfully"
+        flash("Issue added successfully!", "success")
+
+        return redirect("/read-issue")
 
 
     return render_template("create_issue.html")
@@ -199,7 +201,9 @@ def delete_issue(id):
 
     cursor.close()
 
-    return "Issue Deleted Successfully"
+    flash("Issue deleted successfully!", "success")
+
+    return redirect("/read-issue")
 
 if __name__ == "__main__":                          #directly run
     app.run(debug=True)
