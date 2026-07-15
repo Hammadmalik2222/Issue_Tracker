@@ -23,6 +23,7 @@
             <th>Assigned To</th>
             <th>Firefox Version</th>
             <th>Security Issue</th>
+            <th>Action</th>
         </tr>
 
 
@@ -39,6 +40,11 @@
             <td>{{ issue[6] }}</td>
             <td>{{ issue[7] }}</td>
             <td>{{ issue[8] }}</td>
+            <td>
+                <a href="/update-issue/{{ issue[0] }}">
+                    Edit
+                </a>
+            </td>
 
         </tr>
 

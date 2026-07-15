@@ -98,5 +98,66 @@ def view_issues():
 
     return render_template("read_issue.html", issues=issues)
 
+@app.route("/update-issue/<int:id>", methods=["GET","POST"])
+def update_issue(id):
+
+    cursor = mysql.connection.cursor()
+
+
+    if request.method == "POST":
+
+        title = request.form["title"]
+        description = request.form["description"]
+        severity = request.form["severity"]
+        status = request.form["status"]
+        assigned_to = request.form["assigned_to"]
+
+
+        cursor.execute("""
+        UPDATE issues
+
+        SET 
+        title=%s,
+        description=%s,
+        severity=%s,
+        status=%s,
+        assigned_to=%s
+
+        WHERE issue_id=%s
+
+        """,
+        (
+        title,
+        description,
+        severity,
+        status,
+        assigned_to,
+        id
+        ))
+
+
+        mysql.connection.commit()
+
+        cursor.close()
+
+        return "Issue Updated Successfully"
+
+
+    cursor.execute(
+        "SELECT * FROM issues WHERE issue_id=%s",
+        (id,)
+    )
+
+    issue = cursor.fetchone()
+
+    cursor.close()
+
+
+    return render_template(
+        "update_issue.html",
+        issue=issue
+    )
+
+
 if __name__ == "__main__":                          #directly run
     app.run(debug=True)

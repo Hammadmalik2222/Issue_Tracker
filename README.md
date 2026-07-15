@@ -13,5 +13,7 @@
 - Make mysql connection
 - Make issues table in phpmyadmin 
 - Update issues table in phpmyadmin
-- Make add_issue.html file in templates & configure it into app.py to save data into DB
-
+- Make create_issue.html file in templates & configure it into app.py to save data into DB
+- Make read_issue.html file in templates & configure it into app.py to show data from DB
+- Add new heading & edit button in read_issue.html
+- Make update_issue.html file in templates & configure it into app.py to update data into DB
