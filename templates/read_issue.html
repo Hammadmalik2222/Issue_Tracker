@@ -43,7 +43,37 @@
                 📋 Firefox Issues
 
             </h2>
+            {% with messages = get_flashed_messages(with_categories=true) %}
 
+            {% if messages %}
+
+            {% for category, message in messages %}
+
+            <div class="alert alert-success alert-dismissible fade show blink-message">
+
+                {{ message }}
+
+            </div>
+
+            {% endfor %}
+
+            {% endif %}
+
+            {% endwith %}
+            <div class="row mb-3">
+
+                <div class="col-md-6">
+
+                    <form method="GET" action="/read-issue">
+
+                        <input type="text" class="form-control" name="search" placeholder="🔍 Search by title..."
+                            value="{{ request.args.get('search','') }}">
+
+                    </form>
+
+                </div>
+
+            </div>
 
             <table class="table table-hover table-bordered align-middle">
 
@@ -87,9 +117,69 @@
 
                         <td>{{ issue[2] }}</td>
 
-                        <td>{{ issue[3] }}</td>
+                        <td>
 
-                        <td>{{ issue[4] }}</td>
+                            {% if issue[3] == "Critical" %}
+
+                            <span class="badge bg-danger">
+                                Critical
+                            </span>
+
+                            {% elif issue[3] == "High" %}
+
+                            <span class="badge bg-warning text-dark">
+                                High
+                            </span>
+
+                            {% elif issue[3] == "Medium" %}
+
+                            <span class="badge bg-primary">
+                                Medium
+                            </span>
+
+                            {% else %}
+
+                            <span class="badge bg-success">
+                                Low
+                            </span>
+
+                            {% endif %}
+
+                        </td>
+
+                        <td>
+
+                            {% if issue[4] == "Open" %}
+
+                            <span class="badge bg-success">
+                                Open
+                            </span>
+
+
+                            {% elif issue[4] == "In Progress" %}
+
+                            <span class="badge bg-warning text-dark">
+                                In Progress
+                            </span>
+
+
+                            {% elif issue[4] == "Resolved" %}
+
+                            <span class="badge bg-primary">
+                                Resolved
+                            </span>
+
+
+                            {% else %}
+
+                            <span class="badge bg-dark">
+                                Closed
+                            </span>
+
+
+                            {% endif %}
+
+                        </td>
 
                         <td>{{ issue[5] }}</td>
 
@@ -107,7 +197,8 @@
 
                             </a>
 
-                            <a href="/delete-issue/{{ issue[0] }}" class="btn btn-danger btn-sm">
+                            <a href="/delete-issue/{{ issue[0] }}" class="btn btn-danger btn-sm"
+                                onclick="return confirm('Are you sure you want to delete this issue?')">
 
                                 🗑 Delete
 

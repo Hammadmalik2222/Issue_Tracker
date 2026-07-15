@@ -134,3 +134,20 @@ footer {
     }
 
 }
+
+.blink-message {
+
+    animation: blink 0.8s ease-in-out 3;
+
+}
+
+
+@keyframes blink {
+
+    50% {
+
+        opacity: 0.3;
+
+    }
+
+}

@@ -2,10 +2,12 @@ from flask import Flask                             # import class
 from flask import render_template
 from flask_mysqldb import MySQL 
 from flask import request 
+from flask import redirect, flash
                 # render & return html file
 
 
-app = Flask(__name__)     
+app = Flask(__name__)    
+app.secret_key = "firefox_issue_tracker" 
 
 
 app.config["MYSQL_HOST"] = "localhost"
@@ -98,7 +100,21 @@ def view_issues():
 
     cursor = mysql.connection.cursor()
 
-    cursor.execute("SELECT * FROM issues")
+    search = request.args.get("search")
+
+    if search:
+
+        cursor.execute(
+            "SELECT * FROM issues WHERE title LIKE %s",
+            ("%" + search + "%",)
+        )
+
+    else:
+
+        cursor.execute(
+            "SELECT * FROM issues"
+        )
+
 
     issues = cursor.fetchall()
 
@@ -148,7 +164,9 @@ def update_issue(id):
 
         cursor.close()
 
-        return "Issue Updated Successfully"
+        flash("Issue updated successfully!", "success")
+
+        return redirect("/read-issue")
 
 
     cursor.execute(
