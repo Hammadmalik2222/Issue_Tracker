@@ -18,3 +18,8 @@
 - Add new heading & edit button in read_issue.html
 - Make update_issue.html file in templates & configure it into app.py to update data into DB
 - Add route in app.py to delete the issue from DB 
+
+
+repo problem 
+https://github.com/Hammad-Malik1/Issue_Tracker.git 
+this is my repo that I again created yesterday. because my project repo not working 
